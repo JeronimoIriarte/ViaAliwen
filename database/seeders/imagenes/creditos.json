@@ -1,0 +1,230 @@
+{
+    "galerias": [
+        {
+            "destino": "san-martin-de-los-andes",
+            "archivo": "san-martin-de-los-andes/01.jpg",
+            "epigrafe": "El lago Lácar frente a San Martín de los Andes",
+            "titulo": "Lago Lácar en San Martin de los Andes Argentina.JPG",
+            "autor": "Marco Antonio Correa Flores",
+            "licencia": "CC BY-SA 4.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Lago_L%C3%A1car_en_San_Martin_de_los_Andes_Argentina.JPG"
+        },
+        {
+            "destino": "san-martin-de-los-andes",
+            "archivo": "san-martin-de-los-andes/02.jpg",
+            "epigrafe": "La ciudad vista desde el mirador Bandurrias",
+            "titulo": "Vista de la ciudad de San Martin de los Andes desde Mirador Bandurrias.JPG",
+            "autor": "Albasmalko",
+            "licencia": "CC BY-SA 3.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Vista_de_la_ciudad_de_San_Martin_de_los_Andes_desde_Mirador_Bandurrias.JPG"
+        },
+        {
+            "destino": "san-martin-de-los-andes",
+            "archivo": "san-martin-de-los-andes/03.jpg",
+            "epigrafe": "Playa sobre el lago Lácar",
+            "titulo": "Playa san martin de los andes lago lacar.jpg",
+            "autor": "Nsimean",
+            "licencia": "CC0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Playa_san_martin_de_los_andes_lago_lacar.jpg"
+        },
+        {
+            "destino": "villa-la-angostura",
+            "archivo": "villa-la-angostura/01.jpg",
+            "epigrafe": "Villa La Angostura y el lago Nahuel Huapi",
+            "titulo": "Villa la Angostura ,Argentina.JPG",
+            "autor": "Pambas73",
+            "licencia": "CC BY-SA 3.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Villa_la_Angostura_,Argentina.JPG"
+        },
+        {
+            "destino": "villa-la-angostura",
+            "archivo": "villa-la-angostura/02.jpg",
+            "epigrafe": "Paisaje de bosque y lago en Villa La Angostura",
+            "titulo": "Villa La Angostura (3577656728).jpg",
+            "autor": "Daniel P. Gauer from Porto Alegre, Brasil",
+            "licencia": "CC BY 2.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Villa_La_Angostura_(3577656728).jpg"
+        },
+        {
+            "destino": "villa-la-angostura",
+            "archivo": "villa-la-angostura/03.jpg",
+            "epigrafe": "La villa rodeada de montañas patagónicas",
+            "titulo": "Villa-la-angostura-Patagoni.jpg",
+            "autor": "Revisorweb",
+            "licencia": "CC BY-SA 3.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Villa-la-angostura-Patagoni.jpg"
+        },
+        {
+            "destino": "junin-de-los-andes",
+            "archivo": "junin-de-los-andes/01.jpg",
+            "epigrafe": "El río Chimehuín, paraíso de la pesca con mosca",
+            "titulo": "Río Chimehuín en Junín de los Andes.JPG",
+            "autor": "Alexrebolledo",
+            "licencia": "CC BY-SA 3.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:R%C3%ADo_Chimehu%C3%ADn_en_Jun%C3%ADn_de_los_Andes.JPG"
+        },
+        {
+            "destino": "junin-de-los-andes",
+            "archivo": "junin-de-los-andes/02.jpg",
+            "epigrafe": "Junín de los Andes",
+            "titulo": "Junin de los Andes, Neuquén 01.jpg",
+            "autor": "Jmmuguerza",
+            "licencia": "CC BY 4.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Junin_de_los_Andes,_Neuqu%C3%A9n_01.jpg"
+        },
+        {
+            "destino": "junin-de-los-andes",
+            "archivo": "junin-de-los-andes/03.jpg",
+            "epigrafe": "Vista general de Junín de los Andes",
+            "titulo": "Junín de los Andes.JPG",
+            "autor": "Albasmalko",
+            "licencia": "CC BY-SA 3.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Jun%C3%ADn_de_los_Andes.JPG"
+        },
+        {
+            "destino": "villa-traful",
+            "archivo": "villa-traful/01.jpg",
+            "epigrafe": "El lago Traful",
+            "titulo": "Villa Traful lago.jpg",
+            "autor": "Sangianense",
+            "licencia": "CC BY-SA 4.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Villa_Traful_lago.jpg"
+        },
+        {
+            "destino": "villa-traful",
+            "archivo": "villa-traful/02.jpg",
+            "epigrafe": "El bosque sumergido del lago Traful",
+            "titulo": "Bosque sumergido, Villa Traful (Neuquén, Argentina).jpg",
+            "autor": "Andrea Alvarez Sánchez",
+            "licencia": "CC BY-SA 4.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Bosque_sumergido,_Villa_Traful_(Neuqu%C3%A9n,_Argentina).jpg"
+        },
+        {
+            "destino": "villa-traful",
+            "archivo": "villa-traful/03.jpg",
+            "epigrafe": "Mirador sobre el lago Traful",
+            "titulo": "Mirador de Villa Traful.jpg",
+            "autor": "ReinaDiscordia",
+            "licencia": "CC BY-SA 4.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Mirador_de_Villa_Traful.jpg"
+        },
+        {
+            "destino": "caviahue",
+            "archivo": "caviahue/01.jpg",
+            "epigrafe": "El lago Caviahue",
+            "titulo": "Lago Caviahue-edit.jpg",
+            "autor": "Balon Greyjoy",
+            "licencia": "CC BY-SA 3.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Lago_Caviahue-edit.jpg"
+        },
+        {
+            "destino": "caviahue",
+            "archivo": "caviahue/02.jpg",
+            "epigrafe": "El lago visto desde la villa",
+            "titulo": "Lago Caviahue from Caviahue.jpg",
+            "autor": "Balon Greyjoy",
+            "licencia": "CC0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Lago_Caviahue_from_Caviahue.jpg"
+        },
+        {
+            "destino": "caviahue",
+            "archivo": "caviahue/03.jpg",
+            "epigrafe": "Caviahue vista desde Copahue",
+            "titulo": "Caviahue from Copahue.jpg",
+            "autor": "Andarin2",
+            "licencia": "CC BY-SA 3.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Caviahue_from_Copahue.jpg"
+        },
+        {
+            "destino": "copahue",
+            "archivo": "copahue/01.jpg",
+            "epigrafe": "Las termas de Copahue",
+            "titulo": "Termas de Copahue Neuquen.jpg",
+            "autor": "CarlosA.Barrio",
+            "licencia": "CC BY-SA 4.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Termas_de_Copahue_Neuquen.jpg"
+        },
+        {
+            "destino": "copahue",
+            "archivo": "copahue/02.jpg",
+            "epigrafe": "Fumarolas de Las Maquinitas",
+            "titulo": "Copahue-Las Maquinitas.jpg",
+            "autor": "Andarin2",
+            "licencia": "CC BY-SA 3.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Copahue-Las_Maquinitas.jpg"
+        },
+        {
+            "destino": "copahue",
+            "archivo": "copahue/03.jpg",
+            "epigrafe": "El volcán Copahue",
+            "titulo": "Copahue Volcano.jpg",
+            "autor": "Mono Andes from -",
+            "licencia": "CC BY 2.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Copahue_Volcano.jpg"
+        },
+        {
+            "destino": "neuquen-capital",
+            "archivo": "neuquen-capital/01.jpg",
+            "epigrafe": "Paseo de la Costa sobre el río Limay",
+            "titulo": "Neuquen - Rio Limay - Paseo de la Costa 01.jpg",
+            "autor": "Arcibel",
+            "licencia": "CC BY-SA 3.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Neuquen_-_Rio_Limay_-_Paseo_de_la_Costa_01.jpg"
+        },
+        {
+            "destino": "neuquen-capital",
+            "archivo": "neuquen-capital/02.jpg",
+            "epigrafe": "Balneario sobre el río Limay",
+            "titulo": "Riolimaybalneario.JPG",
+            "autor": "Aleposta",
+            "licencia": "CC BY-SA 4.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Riolimaybalneario.JPG"
+        },
+        {
+            "destino": "neuquen-capital",
+            "archivo": "neuquen-capital/03.jpg",
+            "epigrafe": "Confluencia de los ríos Limay y Neuquén",
+            "titulo": "Confluencia de los ríos Limay y Neuquen.jpg",
+            "autor": "Nekgra1315",
+            "licencia": "CC BY-SA 4.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Confluencia_de_los_r%C3%ADos_Limay_y_Neuquen.jpg"
+        },
+        {
+            "destino": "alumine",
+            "archivo": "alumine/01.jpg",
+            "epigrafe": "El lago Aluminé desde el Batea Mahuida",
+            "titulo": "Lago Aluminé desde Batea Mahuida.JPG",
+            "autor": "Albasmalko",
+            "licencia": "CC BY-SA 3.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Lago_Alumin%C3%A9_desde_Batea_Mahuida.JPG"
+        },
+        {
+            "destino": "alumine",
+            "archivo": "alumine/02.jpg",
+            "epigrafe": "Paisaje de Aluminé",
+            "titulo": "Aluminé.JPG",
+            "autor": "Ccarosio",
+            "licencia": "CC BY-SA 4.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Alumin%C3%A9.JPG"
+        },
+        {
+            "destino": "alumine",
+            "archivo": "alumine/03.jpg",
+            "epigrafe": "Lago Ruca Choroy",
+            "titulo": "Lago ruca choroy (Aluminé).jpg",
+            "autor": "Matías Cordero",
+            "licencia": "CC0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Lago_ruca_choroy_(Alumin%C3%A9).jpg"
+        },
+        {
+            "destino": "chos-malal",
+            "archivo": "chos-malal/01.jpg",
+            "epigrafe": "Chos Malal, en el norte neuquino",
+            "titulo": "Chos Malal (Neuquén).jpg",
+            "autor": "Butterfly austral",
+            "licencia": "CC BY-SA 4.0",
+            "pagina": "https://commons.wikimedia.org/wiki/File:Chos_Malal_(Neuqu%C3%A9n).jpg"
+        }
+    ],
+    "portada": null
+}

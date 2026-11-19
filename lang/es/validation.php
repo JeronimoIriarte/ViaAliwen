@@ -1,0 +1,131 @@
+<?php
+
+/*
+| Mensajes de validación en español. Laravel los usa automáticamente porque APP_LOCALE=es.
+| Las reglas que no figuren acá caen en el idioma de respaldo (APP_FALLBACK_LOCALE).
+*/
+
+return [
+
+    'accepted' => 'Tenés que aceptar :attribute.',
+    'after' => ':Attribute debe ser una fecha posterior a :date.',
+    'after_or_equal' => ':Attribute debe ser una fecha posterior o igual a :date.',
+    'alpha' => ':Attribute sólo puede contener letras.',
+    'alpha_dash' => ':Attribute sólo puede contener letras, números, guiones y guiones bajos.',
+    'alpha_num' => ':Attribute sólo puede contener letras y números.',
+    'array' => ':Attribute debe ser una lista.',
+    'before' => ':Attribute debe ser una fecha anterior a :date.',
+    'before_or_equal' => ':Attribute debe ser una fecha anterior o igual a :date.',
+    'between' => [
+        'array' => ':Attribute debe tener entre :min y :max elementos.',
+        'file' => ':Attribute debe pesar entre :min y :max kilobytes.',
+        'numeric' => ':Attribute debe estar entre :min y :max.',
+        'string' => ':Attribute debe tener entre :min y :max caracteres.',
+    ],
+    'boolean' => ':Attribute debe ser verdadero o falso.',
+    'confirmed' => 'La confirmación de :attribute no coincide.',
+    'current_password' => 'La contraseña es incorrecta.',
+    'date' => ':Attribute no es una fecha válida.',
+    'date_equals' => ':Attribute debe ser una fecha igual a :date.',
+    'date_format' => ':Attribute no tiene el formato :format.',
+    'decimal' => ':Attribute debe tener :decimal decimales.',
+    'different' => ':Attribute y :other deben ser distintos.',
+    'digits' => ':Attribute debe tener :digits dígitos.',
+    'digits_between' => ':Attribute debe tener entre :min y :max dígitos.',
+    'distinct' => ':Attribute tiene un valor repetido.',
+    'email' => ':Attribute debe ser una dirección de correo válida.',
+    'exists' => ':Attribute seleccionado no existe.',
+    'extensions' => ':Attribute debe tener una de estas extensiones: :values.',
+    'file' => ':Attribute debe ser un archivo.',
+    'filled' => ':Attribute es obligatorio.',
+    'gt' => [
+        'numeric' => ':Attribute debe ser mayor que :value.',
+        'string' => ':Attribute debe tener más de :value caracteres.',
+    ],
+    'gte' => [
+        'numeric' => ':Attribute debe ser mayor o igual que :value.',
+        'string' => ':Attribute debe tener :value caracteres o más.',
+    ],
+    'image' => ':Attribute debe ser una imagen.',
+    'in' => ':Attribute seleccionado no es válido.',
+    'integer' => ':Attribute debe ser un número entero.',
+    'lowercase' => ':Attribute debe estar en minúsculas.',
+    'lt' => [
+        'numeric' => ':Attribute debe ser menor que :value.',
+        'string' => ':Attribute debe tener menos de :value caracteres.',
+    ],
+    'lte' => [
+        'numeric' => ':Attribute debe ser menor o igual que :value.',
+        'string' => ':Attribute debe tener :value caracteres o menos.',
+    ],
+    'max' => [
+        'array' => ':Attribute no puede tener más de :max elementos.',
+        'file' => ':Attribute no puede pesar más de :max kilobytes.',
+        'numeric' => ':Attribute no puede ser mayor que :max.',
+        'string' => ':Attribute no puede tener más de :max caracteres.',
+    ],
+    'mimes' => ':Attribute debe ser un archivo de tipo: :values.',
+    'mimetypes' => ':Attribute debe ser un archivo de tipo: :values.',
+    'min' => [
+        'array' => ':Attribute debe tener al menos :min elementos.',
+        'file' => ':Attribute debe pesar al menos :min kilobytes.',
+        'numeric' => ':Attribute debe ser al menos :min.',
+        'string' => ':Attribute debe tener al menos :min caracteres.',
+    ],
+    'not_in' => ':Attribute seleccionado no es válido.',
+    'numeric' => ':Attribute debe ser un número.',
+    'password' => [
+        'letters' => ':Attribute debe contener al menos una letra.',
+        'mixed' => ':Attribute debe contener al menos una mayúscula y una minúscula.',
+        'numbers' => ':Attribute debe contener al menos un número.',
+        'symbols' => ':Attribute debe contener al menos un símbolo.',
+        'uncompromised' => ':Attribute apareció en una filtración de datos. Elegí otra.',
+    ],
+    'present' => ':Attribute debe estar presente.',
+    'prohibited' => ':Attribute no está permitido.',
+    'regex' => 'El formato de :attribute no es válido.',
+    'required' => ':Attribute es obligatorio.',
+    'required_if' => ':Attribute es obligatorio cuando :other es :value.',
+    'required_with' => ':Attribute es obligatorio cuando se indica :values.',
+    'same' => ':Attribute y :other deben coincidir.',
+    'size' => [
+        'array' => ':Attribute debe tener :size elementos.',
+        'file' => ':Attribute debe pesar :size kilobytes.',
+        'numeric' => ':Attribute debe ser :size.',
+        'string' => ':Attribute debe tener :size caracteres.',
+    ],
+    'string' => ':Attribute debe ser un texto.',
+    'unique' => 'Ya existe un registro con ese :attribute.',
+    'uploaded' => 'No se pudo subir :attribute.',
+    'url' => ':Attribute debe ser una URL válida.',
+
+    /*
+    | Nombres legibles de los campos (reemplazan :attribute en los mensajes).
+    */
+    'attributes' => [
+        'nombre' => 'nombre',
+        'apellido' => 'apellido',
+        'dni' => 'DNI',
+        'fecha_nacimiento' => 'fecha de nacimiento',
+        'email' => 'correo electrónico',
+        'password' => 'contraseña',
+        'descripcion' => 'descripción',
+        'precio' => 'precio',
+        'salida' => 'fecha y hora de salida',
+        'llegada_estimada' => 'fecha y hora de llegada estimada',
+        'origen_id' => 'origen',
+        'destino_id' => 'destino',
+        'colectivo_id' => 'colectivo',
+        'colectivos' => 'colectivos',
+        'nro_butaca' => 'butaca',
+        'numero_interno' => 'número interno',
+        'patente' => 'patente',
+        'capacidad' => 'capacidad',
+        'estado' => 'estado',
+        'imagenes' => 'imágenes',
+        'imagenes.*' => 'imagen',
+        'q' => 'búsqueda',
+        'fecha' => 'fecha',
+    ],
+
+];
