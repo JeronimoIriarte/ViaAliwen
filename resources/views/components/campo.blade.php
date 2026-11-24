@@ -15,8 +15,9 @@
 
 <div class="mb-3">
     <label for="{{ $nombre }}" class="form-label fw-semibold">{{ $etiqueta }}</label>
+    {{-- En las contraseñas, el botón del ojo va dentro del campo (estilos .va-campo-clave en app.css). --}}
     @if ($esClave)
-        <div class="input-group has-validation">
+        <div class="va-campo-clave">
     @endif
         <input type="{{ $tipo }}" id="{{ $nombre }}" name="{{ $nombre }}"
                @unless ($esClave) value="{{ old($nombre, $valor) }}" @endunless
@@ -24,7 +25,7 @@
                @error($nombre) aria-invalid="true" @enderror
                {{ $attributes->class(['form-control', 'is-invalid' => $errors->has($nombre)]) }}>
         @if ($esClave)
-            <button type="button" class="btn btn-outline-secondary" data-mostrar-clave aria-controls="{{ $nombre }}"
+            <button type="button" class="va-ver-clave" data-mostrar-clave aria-controls="{{ $nombre }}"
                     aria-pressed="false" aria-label="Mostrar contraseña" title="Mostrar contraseña">
                 <i class="bi bi-eye" aria-hidden="true"></i>
             </button>

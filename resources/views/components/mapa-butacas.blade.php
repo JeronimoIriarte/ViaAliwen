@@ -40,7 +40,7 @@
     @endfor
     <div class="d-flex flex-wrap gap-3 small mt-3">
         <span><span class="va-butaca va-butaca-libre va-butaca-mini"></span> Libre</span>
-        <span><span class="va-butaca va-butaca-reservada va-butaca-mini"></span> Reservada (pago en curso)</span>
+        <span><span class="va-butaca va-butaca-reservada va-butaca-mini"></span> Reservada</span>
         <span><span class="va-butaca va-butaca-vendida va-butaca-mini"></span> Vendida</span>
     </div>
 </div>

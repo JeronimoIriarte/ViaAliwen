@@ -111,6 +111,52 @@ main {
     box-shadow: 0 0.5rem 1.5rem rgba(11, 46, 79, 0.08);
 }
 
+/* Campo de contraseña con el botón "mostrar" dentro del input (componente <x-campo tipo="password">) */
+.va-campo-clave {
+    position: relative;
+}
+
+.va-campo-clave .form-control {
+    padding-right: 2.75rem;
+}
+
+/* Con validación, el ícono de Bootstrap (tilde o alerta) se corre a la izquierda del ojo. */
+.va-campo-clave .form-control.is-valid,
+.va-campo-clave .form-control.is-invalid {
+    padding-right: calc(1.5em + 0.75rem + 2.25rem);
+    background-position: right calc(0.375em + 0.1875rem + 2.25rem) center;
+}
+
+.va-ver-clave {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2.75rem;
+    /* misma altura que el input, aunque debajo aparezca el mensaje de error */
+    height: calc(1.5em + 0.75rem + 2 * var(--bs-border-width));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--bs-secondary-color);
+    font-size: 1rem;
+    border-radius: 0 var(--bs-border-radius) var(--bs-border-radius) 0;
+    transition: color 0.15s ease-in-out;
+}
+
+.va-ver-clave:hover,
+.va-ver-clave[aria-pressed="true"] {
+    color: var(--va-azul);
+}
+
+.va-ver-clave:focus-visible {
+    outline: 2px solid var(--va-azul);
+    outline-offset: -6px;
+    border-radius: var(--bs-border-radius);
+}
+
 .va-hero {
     background: linear-gradient(135deg, var(--va-azul-noche) 0%, var(--va-azul) 100%);
     color: #ffffff;
