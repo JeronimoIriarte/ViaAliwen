@@ -11,7 +11,7 @@
         <div class="card border-0 shadow-sm">
             <div class="card-body p-4">
                 <h2 class="h5 mb-3">Datos del destino</h2>
-                <form method="POST" action="{{ route('admin.destinos.update', $destino) }}" novalidate>
+                <form method="POST" action="{{ route('admin.destinos.update', $destino) }}" novalidate data-validacion-en-vivo>
                     @csrf
                     @method('PUT')
                     @include('admin.destinos._form')

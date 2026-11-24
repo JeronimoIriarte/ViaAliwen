@@ -18,26 +18,28 @@
     @foreach (['origen_id' => 'Origen', 'destino_id' => 'Destino'] as $campo => $etiqueta)
         <div class="col-md-6 mb-3">
             <label for="{{ $campo }}" class="form-label fw-semibold">{{ $etiqueta }}</label>
-            <select id="{{ $campo }}" name="{{ $campo }}" class="form-select @error($campo) is-invalid @enderror" @disabled($soloPrecio) required>
+            {{-- Al cambiar el destino se vuelve a revisar el origen (no pueden ser iguales). --}}
+            <select id="{{ $campo }}" name="{{ $campo }}" class="form-select @error($campo) is-invalid @enderror" @disabled($soloPrecio) required
+                    aria-describedby="{{ $campo }}-error" @if ($campo === 'destino_id') data-dependientes="origen_id" @endif>
                 <option value="">Elegí una localidad…</option>
                 @foreach ($destinos as $d)
                     <option value="{{ $d->id }}" @selected((int) old($campo, $viaje->{$campo}) === $d->id)>{{ $d->nombre }}</option>
                 @endforeach
             </select>
-            @error($campo)
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
+            <div class="invalid-feedback" id="{{ $campo }}-error" data-error-para="{{ $campo }}">@error($campo){{ $message }}@enderror</div>
         </div>
     @endforeach
 
     <div class="col-md-6">
+        {{-- Salida y llegada dependen entre sí (llegada posterior, colectivos sin superposición horaria). --}}
         <x-campo nombre="salida" etiqueta="Fecha y hora de salida" tipo="datetime-local"
-                 :valor="$formatoFecha($viaje->salida)" :disabled="$soloPrecio" required />
+                 :valor="$formatoFecha($viaje->salida)" :disabled="$soloPrecio"
+                 data-dependientes="llegada_estimada,colectivos" required />
     </div>
     <div class="col-md-6">
         <x-campo nombre="llegada_estimada" etiqueta="Fecha y hora estimada de llegada" tipo="datetime-local"
                  :valor="$formatoFecha($viaje->llegada_estimada)" :disabled="$soloPrecio"
-                 ayuda="Se carga a mano según el recorrido." required />
+                 ayuda="Se carga a mano según el recorrido." data-dependientes="salida,colectivos" required />
     </div>
     <div class="col-md-6">
         <x-campo nombre="precio" etiqueta="Precio del pasaje ($)" tipo="number" :valor="$viaje->precio"

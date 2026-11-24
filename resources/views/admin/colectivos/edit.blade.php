@@ -8,7 +8,7 @@
 
 <div class="card border-0 shadow-sm mb-4" style="max-width: 48rem">
     <div class="card-body p-4">
-        <form method="POST" action="{{ route('admin.colectivos.update', $colectivo) }}" novalidate>
+        <form method="POST" action="{{ route('admin.colectivos.update', $colectivo) }}" novalidate data-validacion-en-vivo>
             @csrf
             @method('PUT')
             @include('admin.colectivos._form')

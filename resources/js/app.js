@@ -2,7 +2,9 @@
 import * as bootstrap from 'bootstrap';
 import { iniciarBusquedaViajes } from './busqueda-viajes';
 import { iniciarCompraPendiente } from './compra-pendiente';
+import { iniciarMostrarClave } from './mostrar-clave';
 import { iniciarSelectorButacas } from './selector-butacas';
+import { iniciarValidacionEnVivo } from './validacion-en-vivo';
 
 window.bootstrap = bootstrap;
 
@@ -11,4 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     iniciarBusquedaViajes();
     iniciarSelectorButacas();
     iniciarCompraPendiente();
+    iniciarMostrarClave();
+    iniciarValidacionEnVivo();
 });

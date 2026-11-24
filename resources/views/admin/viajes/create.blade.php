@@ -8,7 +8,7 @@
 
 <div class="card border-0 shadow-sm" style="max-width: 56rem">
     <div class="card-body p-4">
-        <form method="POST" action="{{ route('admin.viajes.store') }}" novalidate>
+        <form method="POST" action="{{ route('admin.viajes.store') }}" novalidate data-validacion-en-vivo>
             @csrf
             @include('admin.viajes._form')
 
@@ -30,18 +30,18 @@
                         </div>
                     @endforeach
                 </div>
-                @if ($errors->has('colectivos') || $errors->has('colectivos.*'))
-                    <div class="text-danger small mt-2">
-                        @foreach ($errors->get('colectivos') as $mensaje)
+                @php $hayErrorColectivos = $errors->has('colectivos') || $errors->has('colectivos.*'); @endphp
+                {{-- Siempre presente: la validación en vivo escribe acá los errores de los colectivos. --}}
+                <div class="invalid-feedback mt-2 @if ($hayErrorColectivos) d-block @endif" id="colectivos-error" data-error-para="colectivos">
+                    @foreach ($errors->get('colectivos') as $mensaje)
+                        <div>{{ $mensaje }}</div>
+                    @endforeach
+                    @foreach ($errors->get('colectivos.*') as $mensajesDeUnColectivo)
+                        @foreach ($mensajesDeUnColectivo as $mensaje)
                             <div>{{ $mensaje }}</div>
                         @endforeach
-                        @foreach ($errors->get('colectivos.*') as $mensajesDeUnColectivo)
-                            @foreach ($mensajesDeUnColectivo as $mensaje)
-                                <div>{{ $mensaje }}</div>
-                            @endforeach
-                        @endforeach
-                    </div>
-                @endif
+                    @endforeach
+                </div>
             </fieldset>
 
             <button type="submit" class="btn btn-success"><i class="bi bi-check2 me-1"></i>Crear viaje</button>

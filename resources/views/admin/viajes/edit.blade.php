@@ -8,7 +8,7 @@
 
 <div class="card border-0 shadow-sm" style="max-width: 56rem">
     <div class="card-body p-4">
-        <form method="POST" action="{{ route('admin.viajes.update', $viaje) }}" novalidate>
+        <form method="POST" action="{{ route('admin.viajes.update', $viaje) }}" novalidate data-validacion-en-vivo>
             @csrf
             @method('PUT')
             @include('admin.viajes._form', ['soloPrecio' => $soloPrecio])

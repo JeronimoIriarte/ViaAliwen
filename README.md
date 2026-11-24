@@ -24,7 +24,7 @@ Los viajeros consultan destinos y galerías de fotos, eligen viaje y butaca en u
 12. [Perfiles y permisos](#12-perfiles-y-permisos)
 13. [Funcionalidad AJAX](#13-funcionalidad-ajax)
 14. [Librerías externas](#14-librerías-externas)
-15. [Pruebas automatizadas](#15-pruebas-automatizadas)
+15. [Verificación](#15-verificación)
 16. [Requisitos académicos: dónde se cumple cada uno](#16-requisitos-académicos-dónde-se-cumple-cada-uno)
 17. [Estructura del proyecto](#17-estructura-del-proyecto)
 18. [Créditos de las fotos](#18-créditos-de-las-fotos)
@@ -51,11 +51,10 @@ El diseño completo (análisis del modelo propuesto, problemas encontrados y mod
 | Eloquent ORM | incluido en Laravel | Todo el acceso a datos y las relaciones |
 | MySQL / MariaDB | MariaDB 10.11 (XAMPP) | Base de datos relacional (administrada con HeidiSQL) |
 | Bootstrap | 5.3.8 + Bootstrap Icons 1.13 | Diseño responsive |
-| JavaScript + `fetch` | — | Búsqueda dinámica de viajes y refresco del mapa de butacas |
+| JavaScript + `fetch` | — | Búsqueda dinámica de viajes, refresco del mapa de butacas, estado del pago y validación en vivo de formularios |
 | Vite | 8 | Compila CSS/JS y descarga las fuentes para servirlas desde el proyecto |
 | `mercadopago/dx-php` | 3.16 | SDK oficial de Mercado Pago (Checkout Pro) |
 | `barryvdh/laravel-dompdf` | 3.1 | Pasajes en PDF |
-| PHPUnit | 12 | Pruebas automatizadas |
 
 > El enunciado menciona `mercadopago/sdk-php`, pero **ese nombre no existe en Packagist**: es el nombre del repositorio de GitHub. El paquete oficial se instala como `mercadopago/dx-php`.
 
@@ -144,7 +143,6 @@ php artisan db:seed              # carga los datos de prueba
 php artisan migrate:fresh --seed # borra todo y vuelve a crear la base con datos de prueba
 php artisan compras:vencer       # marca como vencidas las compras con la reserva expirada (también ocurre solo)
 php artisan schedule:work        # (opcional) corre compras:vencer cada 5 minutos
-php artisan test                 # pruebas automatizadas (usan SQLite en memoria, no tocan tu base)
 npm run dev                      # Vite en modo desarrollo (recarga automática de estilos)
 ```
 
@@ -187,7 +185,7 @@ Además hay 60 viajeros ficticios generados con Faker, que figuran como comprado
 - Si intenta comprar, se le pide ingresar o registrarse; después de ingresar vuelve al viaje.
 
 **Viajero**
-- **Cuenta:** registro (nombre, apellido, DNI, correo, fecha de nacimiento y contraseña), ingreso y cierre de sesión.
+- **Cuenta:** registro (nombre, apellido, DNI, correo, fecha de nacimiento y contraseña), ingreso y cierre de sesión. Al crear la cuenta, los errores aparecen mientras se escribe; el ingreso sólo valida al enviar. Los campos de contraseña tienen un botón para mostrar u ocultar lo escrito.
 - **Mis datos:** puede editar su nombre, apellido y fecha de nacimiento; el DNI y el correo no se modifican.
 - **Butaca:** la elige en el mapa del colectivo. El mapa se refresca solo cuando otra persona compra o reserva una butaca.
 - **Carrito:** varios viajes en una misma operación, una butaca por viaje. Muestra destino, origen, horario, fecha, colectivo, butaca, precio individual y total, y permite quitar viajes o seguir comprando.
@@ -310,7 +308,7 @@ Cómo se implementa:
   - "Mis datos" no recibe ningún id por la URL: siempre usa al viajero autenticado.
   - Los precios se leen siempre de la base, así nadie puede cambiarlos desde el navegador.
   - Todos los formularios tienen CSRF y las contraseñas se guardan con hash.
-  - El login acepta 5 intentos por minuto.
+  - Límites de peticiones (`throttle`), cada uno con su propio contador: login 5 por minuto, registro 60, búsqueda 60, checkout 10, verificar pago 10 y estado del pago 30.
   - El webhook está excluido de CSRF y se valida con firma.
 
 ## 13. Funcionalidad AJAX
@@ -327,6 +325,15 @@ Muestra un indicador de carga, la cantidad de resultados, un mensaje si no hay n
 
 **Mapa de butacas** (`resources/js/selector-butacas.js`): cada 20 segundos consulta `GET /viajes/{id}/butacas` (JSON) y marca como ocupadas las butacas que otra persona compró o reservó.
 
+**Validación en vivo de formularios** (`resources/js/validacion-en-vivo.js`, con Laravel Precognition): en el registro, "Mis datos" y los formularios del panel (destinos, colectivos y viajes). No se usa en el inicio de sesión.
+
+1. El usuario escribe en un campo (espera 400 ms desde la última tecla) o lo cambia.
+2. JavaScript envía el formulario con `fetch` a su misma ruta, con los encabezados `Precognition: true` y `Precognition-Validate-Only: campo`.
+3. El middleware `precognitive` hace que Laravel ejecute sólo el Form Request de esa ruta (las mismas reglas y mensajes que al guardar), sin ejecutar el controlador: no se guarda nada.
+4. Responde 204 si el campo es válido, o 422 con los errores en JSON. JavaScript marca el campo en verde o en rojo con el mensaje.
+
+Sólo se validan los campos que el usuario ya tocó. Algunos dependen de otros y se revisan juntos (`data-dependientes`): la contraseña y su repetición, salida y llegada, origen y destino. Al enviar, el servidor valida todo de nuevo.
+
 ## 14. Librerías externas
 
 | Librería | Por qué la usa este dominio |
@@ -336,24 +343,18 @@ Muestra un indicador de carga, la cantidad de resultados, un mensaje si no hay n
 | **Bootstrap 5 + Bootstrap Icons** | Interfaz responsive y accesible con la identidad visual pedida: fondo blanco, azules en la estructura y verdes en los detalles. |
 | **laravel-vite-plugin** (fuentes) | Descarga Montserrat y Nunito Sans al compilar y las sirve desde el proyecto, así la página funciona sin internet durante la defensa. |
 
-## 15. Pruebas automatizadas
+## 15. Verificación
 
-```bash
-php artisan test
-```
+Durante el desarrollo se verificaron los puntos de la Etapa 9:
 
-**89 pruebas** (PHPUnit, base SQLite en memoria; Mercado Pago se reemplaza por un doble de prueba). Cubren:
+- **Flujos completos:** registro, ingreso, búsqueda, elección de butaca, carrito, pago y descarga de pasajes.
+- **Permisos:** un visitante va al ingreso, un viajero no entra al panel (403), un admin sólo edita sus viajes y nadie ve compras ni pasajes ajenos.
+- **Disponibilidad:** un viaje completo o con su colectivo dado de baja no aparece a la venta, y las butacas reservadas se liberan al vencer.
+- **Pagos aprobados y rechazados** en el sandbox de Mercado Pago (titulares `APRO` y `OTHE`).
+- **Sin pasajes duplicados:** el índice único y la confirmación idempotente del pago lo impiden.
+- **PDF:** uno por pasaje, sólo para el titular y con la compra aprobada.
 
-- registro, ingreso, roles y protección de rutas;
-- policies;
-- reglas de disponibilidad;
-- CRUD de destinos, colectivos y viajes con sus validaciones;
-- carrito;
-- checkout con reservas;
-- confirmación del pago: aprobado, rechazado, monto distinto, notificaciones repetidas, firma inválida, pago tardío con butaca vendida;
-- PDF y su protección;
-- búsqueda JSON;
-- estadísticas.
+Para repetir estas pruebas a mano, usá los usuarios de la sección 8 y las tarjetas de prueba de [`docs/MERCADOPAGO.md`](docs/MERCADOPAGO.md).
 
 ## 16. Requisitos académicos: dónde se cumple cada uno
 
@@ -376,9 +377,9 @@ php artisan test
 | 15 | Middleware | `EnsureUserHasRole` (`rol:admin` / `rol:viajero`) y `auth` |
 | 16 | Restricción según el usuario | Policies de viaje, compra y pasaje; "Mis datos" sin id |
 | 17 | Formularios con validaciones | 10 Form Requests en `app/Http/Requests` |
-| 18 | AJAX sin recarga | Búsqueda de viajes y mapa de butacas (sección 13) |
+| 18 | AJAX sin recarga | Búsqueda de viajes, mapa de butacas, estado del pago y validación en vivo (sección 13) |
 | 19 | Librerías externas | Mercado Pago y DomPDF (sección 14) |
-| 20 | Código organizado | Servicios (`app/Services`), enums, policies, Pint aplicado, pruebas |
+| 20 | Código organizado | Servicios (`app/Services`), enums, policies, Pint aplicado |
 
 ## 17. Estructura del proyecto
 
@@ -400,12 +401,12 @@ database/
 docs/               diseño (Etapa 1) y guía de Mercado Pago
 resources/
   css/app.css       identidad visual
-  js/               app.js, busqueda-viajes.js, selector-butacas.js
+  js/               app.js, busqueda-viajes.js, selector-butacas.js, compra-pendiente.js,
+                    mostrar-clave.js, validacion-en-vivo.js
   views/            layouts/, partials/, components/, auth/, destinos/, viajes/,
                     carrito/, compras/, perfil/, admin/, pdf/, errors/
 routes/web.php      rutas agrupadas por perfil
 routes/console.php  comando compras:vencer
-tests/Feature/      pruebas automatizadas
 ```
 
 ## 18. Créditos de las fotos

@@ -9,7 +9,7 @@
             <h1 class="h3 mb-1">Mis datos</h1>
             <p class="text-body-secondary mb-4">Estos datos se imprimen en tus pasajes.</p>
 
-            <form method="POST" action="{{ route('perfil.update') }}" novalidate>
+            <form method="POST" action="{{ route('perfil.update') }}" novalidate data-validacion-en-vivo>
                 @csrf
                 @method('PUT')
 

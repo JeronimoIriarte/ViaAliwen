@@ -31,7 +31,10 @@ class RegistroRequest extends FormRequest
             'dni' => ['required', 'digits_between:7,8', 'unique:viajeros,dni'],
             'fecha_nacimiento' => ['required', 'date', 'before:today', 'after:1900-01-01'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email'],
-            'password' => ['required', 'confirmed', Password::min(8)->letters()->numbers()],
+            'password' => ['required', Password::min(8)->letters()->numbers()],
+            // La coincidencia se valida en la repetición (no con "confirmed" en password): así el error
+            // aparece debajo de "Repetí la contraseña" y no mientras se escribe la primera.
+            'password_confirmation' => ['required', 'same:password'],
         ];
     }
 
@@ -43,6 +46,8 @@ class RegistroRequest extends FormRequest
             'dni.unique' => 'Ya hay una cuenta registrada con ese DNI.',
             'email.unique' => 'Ya hay una cuenta registrada con ese correo electrónico.',
             'fecha_nacimiento.before' => 'La fecha de nacimiento debe ser anterior a hoy.',
+            'password_confirmation.required' => 'Repetí la contraseña.',
+            'password_confirmation.same' => 'Las contraseñas no coinciden.',
         ];
     }
 }

@@ -14,15 +14,13 @@
     </div>
     <div class="col-md-6 mb-3">
         <label for="estado" class="form-label fw-semibold">Estado</label>
-        <select id="estado" name="estado" class="form-select @error('estado') is-invalid @enderror" required>
+        <select id="estado" name="estado" class="form-select @error('estado') is-invalid @enderror" required aria-describedby="estado-error">
             @foreach (\App\Enums\EstadoColectivo::cases() as $estado)
                 <option value="{{ $estado->value }}" @selected(old('estado', $colectivo->estado?->value) === $estado->value)>
                     {{ $estado->etiqueta() }}
                 </option>
             @endforeach
         </select>
-        @error('estado')
-            <div class="invalid-feedback">{{ $message }}</div>
-        @enderror
+        <div class="invalid-feedback" id="estado-error" data-error-para="estado">@error('estado'){{ $message }}@enderror</div>
     </div>
 </div>

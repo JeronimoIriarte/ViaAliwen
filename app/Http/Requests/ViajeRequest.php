@@ -5,6 +5,7 @@ namespace App\Http\Requests;
 use App\Models\Colectivo;
 use App\Models\Viaje;
 use App\Services\ColectivoService;
+use Carbon\Exceptions\InvalidFormatException;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Gate;
@@ -69,12 +70,23 @@ class ViajeRequest extends FormRequest
     {
         return [
             function (Validator $validator) {
-                if ($this->soloPrecio() || $validator->errors()->hasAny(['salida', 'llegada_estimada', 'colectivos', 'colectivos.*'])) {
+                // En la validación en vivo (Precognition) las reglas vienen filtradas: este control sólo
+                // corresponde si se están validando las fechas o los colectivos.
+                $reglas = $validator->getRules();
+                $corresponde = isset($reglas['salida']) || isset($reglas['llegada_estimada']) || isset($reglas['colectivos']);
+
+                if ($this->soloPrecio() || ! $corresponde
+                    || $validator->errors()->hasAny(['salida', 'llegada_estimada', 'colectivos', 'colectivos.*'])
+                    || ! $this->filled(['salida', 'llegada_estimada'])) {
                     return;
                 }
 
-                $salida = Carbon::parse($this->input('salida'));
-                $llegada = Carbon::parse($this->input('llegada_estimada'));
+                try {
+                    $salida = Carbon::parse($this->input('salida'));
+                    $llegada = Carbon::parse($this->input('llegada_estimada'));
+                } catch (InvalidFormatException) {
+                    return; // fecha incompleta mientras se escribe: la informa su propia regla
+                }
                 $campo = $this->viaje() ? 'salida' : 'colectivos';
                 $colectivos = $this->viaje()
                     ? $this->viaje()->colectivos

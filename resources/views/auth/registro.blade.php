@@ -9,7 +9,8 @@
             <h1 class="h3 mb-1">Creá tu cuenta de viajero</h1>
             <p class="text-body-secondary mb-4">Tus datos figuran en cada pasaje, así que cargalos tal como aparecen en tu DNI.</p>
 
-            <form method="POST" action="{{ route('registro.guardar') }}" novalidate>
+            {{-- data-validacion-en-vivo: los errores aparecen mientras se escribe (resources/js/validacion-en-vivo.js) --}}
+            <form method="POST" action="{{ route('registro.guardar') }}" novalidate data-validacion-en-vivo>
                 @csrf
 
                 <h2 class="h6 text-uppercase va-detalle mb-3">Datos personales</h2>
@@ -32,8 +33,9 @@
                 <x-campo nombre="email" etiqueta="Correo electrónico" tipo="email" autocomplete="email" required />
                 <div class="row">
                     <div class="col-md-6">
+                        {{-- data-dependientes: al cambiar la contraseña se vuelve a revisar la repetición --}}
                         <x-campo nombre="password" etiqueta="Contraseña" tipo="password" autocomplete="new-password"
-                                 ayuda="Mínimo 8 caracteres, con letras y números." required />
+                                 ayuda="Mínimo 8 caracteres, con letras y números." data-dependientes="password_confirmation" required />
                     </div>
                     <div class="col-md-6">
                         <x-campo nombre="password_confirmation" etiqueta="Repetí la contraseña" tipo="password" autocomplete="new-password" required />

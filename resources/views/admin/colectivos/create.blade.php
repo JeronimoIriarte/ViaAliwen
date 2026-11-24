@@ -8,7 +8,7 @@
 
 <div class="card border-0 shadow-sm" style="max-width: 48rem">
     <div class="card-body p-4">
-        <form method="POST" action="{{ route('admin.colectivos.store') }}" novalidate>
+        <form method="POST" action="{{ route('admin.colectivos.store') }}" novalidate data-validacion-en-vivo>
             @csrf
             @include('admin.colectivos._form')
             <button type="submit" class="btn btn-success"><i class="bi bi-check2 me-1"></i>Crear colectivo</button>
