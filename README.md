@@ -6,6 +6,15 @@ Los viajeros consultan destinos y galerías de fotos, eligen viaje y butaca en u
 
 > "Aliwén" significa "árbol" en mapuzungun.
 
+## Integrantes del grupo
+
+| Integrante | Legajo | Correo |
+|---|---|---|
+| Jeronimo Iriarte | FAI-3857 | iriartejeronimo7@gmail.com |
+| Braian Condori | FAI-5001 | braian.condori@est.fi.uncoma.edu.ar |
+| Lucio Martinez | FAI-4901 | lucio.martinez@est.fi.uncoma.edu.ar |
+| Limay Sanchez | FAI-5634 | limaymati@gmail.com |
+
 ---
 
 ## Índice
